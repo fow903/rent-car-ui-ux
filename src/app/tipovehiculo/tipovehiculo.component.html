@@ -1,3 +1,35 @@
-<p>
-  tipovehiculo works!
-</p>
+<div class="container">
+
+  <div class="panel panel-primary">
+    <div class="panel-heading">Status</div>
+    <div class="panel-body">
+      <ul class="list-group">
+        <li *ngFor="let tipo of tipos" class="list-group-item"  [class.active]="tipo.id == selectedTipo.id">
+          <div *ngIf="tipo.estado" class="row">
+            <div class="col-xs-12 col-md-8">
+              <h4 (click)="tipoClicked(tipo)" >{{ tipo.descripcion }}</h4>
+            </div>
+            <div class="col-xs-6 col-md-4" style="alignment: right">
+              <span class="badge badge-primary badge-pill">{{ tipo.estado }}</span>
+            </div>
+          </div>
+        </li>
+      </ul>
+      <hr>
+      <div class="form-group">
+        <label for="desc">Descripcion</label>
+        <input id="desc" type="text" [(ngModel)]="selectedTipo.descripcion">
+
+      </div>
+      <div class="form-group">
+        <label for="state">Estado</label>
+        <input id="state" type="checkbox" [(ngModel)]="selectedTipo.estado">
+
+      </div>
+      <button class="btn btn-primary" (click)="updateTipo(tipo)"> Actualizar </button>
+      <button class="btn btn-primary" (click)="createTipo(tipo)"> Crear </button>
+
+
+    </div>
+  </div>
+</div>

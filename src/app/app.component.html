@@ -1,37 +1,16 @@
-<!--The content below is only a placeholder and can be replaced.-->
 <div class="container">
-  <div class="jumbotron">
-    <h2>Lista de tipos</h2>
-  </div>
-  <div class="panel panel-primary">
-    <div class="panel-heading">Status</div>
-    <div class="panel-body">
-      <ul class="list-group">
-        <li *ngFor="let tipo of tipos" class="list-group-item"  [class.active]="tipo.id == selectedTipo.id">
-          <div *ngIf="tipo.estado">
-            <h2 (click)="tipoClicked(tipo)" >{{ tipo.descripcion }}</h2>
-          </div>
-        </li>
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#">Exoneracion Rent-Car</a>
+      </div>
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Home</a></li>
+        <li><a class="navbar-toggler" routerLink="/tipo-veh" routerLinkActive="active">Tipos de Vehiculos</a></li>
+        <li><a class="navbar-toggler" routerLink="/marca" routerLinkActive="active">Marcas</a></li>
+        <li><a href="#">Page 3</a></li>
       </ul>
-      <hr>
-      <div class="form-group">
-        <label for="desc">Descripcion</label>
-        <input id="desc" type="text" [(ngModel)]="selectedTipo.descripcion">
-
-      </div>
-      <div class="form-group">
-        <label for="state">Estado</label>
-        <input id="state" type="checkbox" [(ngModel)]="selectedTipo.estado">
-
-      </div>
-      <button class="btn btn-primary" (click)="updateTipo(tipo)"> Actualizar </button>
-      <button class="btn btn-primary" (click)="createTipo(tipo)"> Crear </button>
-
-
     </div>
-  </div>
+  </nav>
 </div>
-
-
-
 <router-outlet></router-outlet>
