@@ -1,3 +1,38 @@
-<p>
-  modelo works!
-</p>
+<div class="container">
+
+  <div class="panel panel-primary">
+    <div class="panel-heading">{{ title }}</div>
+    <div class="panel-body">
+      <ul class="list-group">
+        <li *ngFor="let modelo of modelos" class="list-group-item"  [class.active]="modelo.id == selectedModelo.id">
+          <div *ngIf="modelo.estado" class="row">
+            <div class="col-xs-12 col-md-8">
+              <h4 (click)="modeloClicked(modelo)" >{{ modelo.descripcion }}</h4>
+            </div>
+            <div class="col-xs-6 col-md-4" style="alignment: right">
+              <span class="badge badge-primary badge-pill">{{ modelo.estado }}</span>
+            </div>
+          </div>
+        </li>
+      </ul>
+      <hr>
+      <div class="form-group">
+        <label for="desc">Descripcion</label>
+        <input id="desc" class="form-control" type="text" [(ngModel)]="selectedModelo.descripcion">
+      </div>
+      <div class="form-group">
+        <label for="modelo-marca">Marca</label>
+        <input id="modelo-marca" class="form-control" type="text" [(ngModel)]="selectedModelo.marca">
+
+      </div>
+      <div class="form-group">
+        <label for="state">Estado</label>
+        <input id="state" class="form-control" type="checkbox" [(ngModel)]="selectedModelo.estado">
+      </div>
+      <button class="btn btn-primary" (click)="updateModelo(modelo)"> Actualizar </button>
+      <button class="btn btn-primary" (click)="createModelo(modelo)"> Crear </button>
+
+
+    </div>
+  </div>
+</div>

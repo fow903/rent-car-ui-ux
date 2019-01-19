@@ -7,6 +7,7 @@ import {ApiService} from "../api.service";
   styleUrls: ['./tipovehiculo.component.css']
 })
 export class TipovehiculoComponent {
+  title = "Tipos de Vehiculos"
   tipos = []
   selectedTipo;
   constructor(private api: ApiService){

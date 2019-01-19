@@ -14,10 +14,14 @@ import { EmpleadoComponent } from './empleado/empleado.component';
 import { InspeccionComponent } from './inspeccion/inspeccion.component';
 import { RentaComponent } from './renta/renta.component';
 import { TipovehiculoComponent } from './tipovehiculo/tipovehiculo.component';
+import { MatSelectModule } from '@angular/material'
+import { Globals } from './globals';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
 
 const appRoutes: Routes = [
   { path: 'tipo-veh', component: TipovehiculoComponent },
   { path: 'marca', component: MarcaComponent },
+  { path: 'modelo', component: ModeloComponent },
   // { path: 'home', component: AppComponent },
 ];
 
@@ -42,9 +46,11 @@ const appRoutes: Routes = [
     RouterModule.forRoot(
       appRoutes,
       { enableTracing: true } // <-- debugging purposes only
-    )
+    ),
+    MatSelectModule,
+    BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [Globals],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

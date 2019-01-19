@@ -1,7 +1,7 @@
 <div class="container">
 
   <div class="panel panel-primary">
-    <div class="panel-heading">Status</div>
+    <div class="panel-heading">{{ title }}</div>
     <div class="panel-body">
       <ul class="list-group">
         <li *ngFor="let tipo of tipos" class="list-group-item"  [class.active]="tipo.id == selectedTipo.id">
