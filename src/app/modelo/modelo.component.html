@@ -2,7 +2,7 @@
 
   <div class="panel panel-primary">
     <div class="panel-heading">{{ title }}</div>
-    <div class="panel-body">
+    <div class="panel-body" @fade class="open-close-container">
       <ul class="list-group">
         <li *ngFor="let modelo of modelos" class="list-group-item"  [class.active]="modelo.id == selectedModelo.id">
           <div *ngIf="modelo.estado" class="row">
@@ -20,11 +20,15 @@
         <label for="desc">Descripcion</label>
         <input id="desc" class="form-control" type="text" [(ngModel)]="selectedModelo.descripcion">
       </div>
-      <div class="form-group">
+     <!-- <div class="form-group">
         <label for="modelo-marca">Marca</label>
-        <input id="modelo-marca" class="form-control" type="text" [(ngModel)]="selectedModelo.marca">
+        <select name="marcas" id="modelo-marca" [id]="selectedMarca.id" [(ngModel)]="selectedMarca" [value]="selectedMarca.id">
+          <option *ngFor="let marca of marcas" value="{{ marca.id }}">{{ marca.descripcion }}</option>
+        </select>
 
-      </div>
+      <input id="modelo-marca" class="form-control" type="text" [(ngModel)]="selectedModelo.marca">
+
+      </div>-->
       <div class="form-group">
         <label for="state">Estado</label>
         <input id="state" class="form-control" type="checkbox" [(ngModel)]="selectedModelo.estado">

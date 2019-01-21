@@ -9,17 +9,7 @@ import {Globals} from "./globals";
 })
 export class AppComponent {
 
-  constructor(private api:ApiService, private globals:Globals){
-    this.api.getAllMarcas().subscribe(
-
-      data => {
-        this.globals.marcas = data;
-        console.log(this.globals.marcas);
-      },
-      error => {
-        console.log(error);
-      }
-    )
+  constructor(private api:ApiService){
 
   }
 

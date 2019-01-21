@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ApiService} from "../api.service";
+import { endpoints } from "../shared/endpoints";
 
 @Component({
   selector: 'app-tipovehiculo',
@@ -7,15 +8,15 @@ import {ApiService} from "../api.service";
   styleUrls: ['./tipovehiculo.component.css']
 })
 export class TipovehiculoComponent {
-  title = "Tipos de Vehiculos"
-  tipos = []
+  title = "Tipos de Vehiculos";
+  tipos = [];
   selectedTipo;
   constructor(private api: ApiService){
     this.getTipoveh();
     this.selectedTipo = {id: -1, descripcion: '', estado: ''};
   }
   getTipoveh = () => {
-    this.api.getAllTiposVeh().subscribe(
+    this.api.getAll(endpoints.tiposVehiculos).subscribe(
 
       data => {
         this.tipos = data;
@@ -24,14 +25,14 @@ export class TipovehiculoComponent {
         console.log(error);
       }
     )
-  }
+  };
 
   tipoClicked = (tipo) => {
     if(this.selectedTipo.id == tipo.id){
       this.selectedTipo = {id: -1, descripcion: '', estado: ''};
     }
     else {
-      this.api.getOneTiposVeh(tipo.id).subscribe(
+      this.api.getOne(tipo.id,endpoints.tiposVehiculos).subscribe(
 
       data => {
         this.selectedTipo = data;
@@ -43,10 +44,10 @@ export class TipovehiculoComponent {
     )
     }
 
-  }
+  };
 
   updateTipo = () => {
-    this.api.updateTiposVeh(this.selectedTipo).subscribe(
+    this.api.update(this.selectedTipo,endpoints.tiposVehiculos).subscribe(
       data => {
         this.selectedTipo = data;
       },
@@ -54,9 +55,9 @@ export class TipovehiculoComponent {
         console.log(error);
       }
     )
-  }
+  };
   createTipo = () => {
-    this.api.createTiposVeh(this.selectedTipo).subscribe(
+    this.api.create(this.selectedTipo,endpoints.tiposVehiculos).subscribe(
       data => {
         this.tipos.push(data);
       },
@@ -64,5 +65,5 @@ export class TipovehiculoComponent {
         console.log(error);
       }
     )
-  }
+  };
 }

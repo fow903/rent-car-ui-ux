@@ -13,74 +13,26 @@ export class ApiService {
 
   constructor(private http: HttpClient ) { }
   // Tipos de Vehiculos
-  getAllTiposVeh(): Observable<any>{
-    return this.http.get(this.baseurl+'/tipoveh/',
+  getAll(slash): Observable<any>{
+    return this.http.get(this.baseurl+ slash,
       {headers:this.httpHeaders});
   }
 
-  getOneTiposVeh(id): Observable<any>{
-    return this.http.get(this.baseurl+'/tipoveh/' + id +'/',
+  getOne(id,slash): Observable<any>{
+    return this.http.get(this.baseurl+ slash + id +'/',
       {headers:this.httpHeaders});
   }
 
-  updateTiposVeh(tipo): Observable<any>{
-    const body = {descripcion: tipo.descripcion, estado: tipo.estado};
-    return this.http.put(this.baseurl+'/tipoveh/' + tipo.id +'/', body,
+  update(object,slash): Observable<any>{
+    const body = object;
+    return this.http.put(this.baseurl+ slash + object.id +'/', body,
       {headers:this.httpHeaders});
   }
 
-  createTiposVeh(tipo): Observable<any>{
-    const body = {descripcion: tipo.descripcion, estado: tipo.estado};
-    return this.http.post(this.baseurl+'/tipoveh/', body,
+  create(object,slash): Observable<any>{
+    const body = object;
+    return this.http.post(this.baseurl+ slash, body,
       {headers:this.httpHeaders});
   }
-
-  //  Marcas
-  getAllMarcas(): Observable<any>{
-    return this.http.get(this.baseurl+'/marca/',
-      {headers:this.httpHeaders});
-  }
-
-  getOneMarca(id): Observable<any>{
-    return this.http.get(this.baseurl+'/marca/' + id +'/',
-      {headers:this.httpHeaders});
-  }
-
-  updateMarca(marca): Observable<any>{
-    const body = {descripcion: marca.descripcion, estado: marca.estado};
-    return this.http.put(this.baseurl+'/marca/' + marca.id +'/', body,
-      {headers:this.httpHeaders});
-  }
-
-  createMarca(marca): Observable<any>{
-    const body = {descripcion: marca.descripcion, estado: marca.estado};
-    return this.http.post(this.baseurl+'/marca/', body,
-      {headers:this.httpHeaders});
-  }
-
-  // Modelos de Vehiculos
-
-  getAllModelos(): Observable<any>{
-    return this.http.get(this.baseurl+'/modelo/',
-      {headers:this.httpHeaders});
-  }
-
-  getOneModelo(id): Observable<any>{
-    return this.http.get(this.baseurl+'/modelo/' + id +'/',
-      {headers:this.httpHeaders});
-  }
-
-  updateModelo(modelo): Observable<any>{
-    const body = {marca: modelo.marca, descripcion: modelo.descripcion, estado: modelo.estado};
-    return this.http.put(this.baseurl+'/modelo/' + modelo.id +'/', body,
-      {headers:this.httpHeaders});
-  }
-
-  createModelo(modelo): Observable<any>{
-    const body = {marca: modelo.marca, descripcion: modelo.descripcion, estado: modelo.estado};
-    return this.http.post(this.baseurl+'/modelo/', body,
-      {headers:this.httpHeaders});
-  }
-
 
 }
